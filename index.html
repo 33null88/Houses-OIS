@@ -1,0 +1,822 @@
+<html lang="en" data-theme="dark" class="has-cur">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>House System — Luna • Solis • Terra</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Onest:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body>
+    <canvas
+      id="bg"
+      aria-hidden="true"
+      width="1196"
+      height="991"
+      style="display: block"
+    ></canvas>
+
+    <header
+      class="sticky top-0 z-50"
+      style="
+        background: var(--hd);
+        backdrop-filter: blur(12px);
+        padding-top: env(safe-area-inset-top, 0px);
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3"
+      >
+        <a href="#top" class="disp font-bold text-sm tracking-tight"
+          >HOUSE SYSTEM</a
+        >
+        <div class="ml-auto flex">
+          <button id="thBtn" class="ib" aria-label="Theme">🌙</button
+          ><button id="setBtn" class="ib" aria-label="Settings">⚙️</button>
+        </div>
+        <div
+          class="lang flex gap-1 glass !rounded-full p-1"
+          role="group"
+          aria-label="Language"
+        >
+          <button data-l="en" aria-pressed="true">EN</button
+          ><button data-l="ru" aria-pressed="false">RU</button
+          ><button data-l="uz" aria-pressed="false">UZ</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section id="hero" class="min-h-[88vh] flex items-center">
+        <div class="max-w-6xl mx-auto px-4 w-full">
+          <p
+            class="mb-4 text-sm"
+            style="color: var(--mute)"
+            data-i18n="hero_tag"
+          >
+            School team competition
+          </p>
+          <h1
+            class="text-5xl sm:text-7xl font-bold leading-[1.05]"
+            data-i18n="hero_t"
+          >
+            House System
+          </h1>
+          <p
+            class="mt-6 max-w-xl text-lg"
+            style="color: var(--mute)"
+            data-i18n="hero_p"
+          >
+            Three Houses, one school, friendly competition all year long.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
+            <a
+              href="#scores"
+              class="px-6 py-3 rounded-full"
+              style="background: var(--solis); color: #1a1200"
+              data-i18n="hero_cta"
+              >See the scoreboard</a
+            >
+            <a
+              href="#about"
+              class="px-6 py-3 rounded-full glass"
+              data-i18n="hero_cta2"
+              >How it works</a
+            >
+          </div>
+          <p class="mt-10 disp text-sm flex gap-5">
+            <span style="color: var(--luna)">Luna</span
+            ><span style="color: var(--solis)">Solis</span
+            ><span style="color: var(--terra)">Terra</span>
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="py-20">
+        <div class="max-w-3xl mx-auto px-4">
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="about_t">
+            What is the House System?
+          </h2>
+          <p
+            class="mt-5 text-lg leading-relaxed"
+            style="color: var(--mute)"
+            data-i18n="about_p"
+          >
+            House System is a school system that brings students together in
+            three Houses and creates friendly team competition during the school
+            year.
+          </p>
+        </div>
+      </section>
+
+      <section id="houses" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="houses_t">
+            Three Houses
+          </h2>
+          <p class="mt-3" style="color: var(--mute)" data-i18n="houses_p">
+            Each class belongs to one House. All Houses are equal.
+          </p>
+          <div id="houseCards" class="mt-10 grid md:grid-cols-3 gap-5">
+            <article
+              class="glass tilt p-6"
+              data-i="0"
+              style="
+                --acc: var(--luna);
+                border-top: 3px solid var(--luna);
+                --ry: 0deg;
+                --rx: 0deg;
+              "
+            >
+              <p class="text-4xl">🌙</p>
+              <h3 class="mt-3 text-2xl font-bold" style="color: var(--luna)">
+                Luna
+              </h3>
+              <p class="mt-2" style="color: var(--mute)">
+                Calm minds, sharp ideas.
+              </p>
+              <p class="mt-5 text-sm font-semibold">House leaders</p>
+              <dl class="mt-2 text-sm space-y-1" style="color: var(--mute)">
+                <div class="flex justify-between">
+                  <dt>President</dt>
+                  <dd>To be announced</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt>President's Assistant</dt>
+                  <dd>To be announced</dd>
+                </div>
+              </dl>
+            </article>
+            <article
+              class="glass tilt p-6"
+              data-i="1"
+              style="
+                --acc: var(--solis);
+                border-top: 3px solid var(--solis);
+                --ry: 0deg;
+                --rx: 0deg;
+              "
+            >
+              <p class="text-4xl">☀️</p>
+              <h3 class="mt-3 text-2xl font-bold" style="color: var(--solis)">
+                Solis
+              </h3>
+              <p class="mt-2" style="color: var(--mute)">
+                Bright energy, bold moves.
+              </p>
+              <p class="mt-5 text-sm font-semibold">House leaders</p>
+              <dl class="mt-2 text-sm space-y-1" style="color: var(--mute)">
+                <div class="flex justify-between">
+                  <dt>President</dt>
+                  <dd>To be announced</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt>President's Assistant</dt>
+                  <dd>To be announced</dd>
+                </div>
+              </dl>
+            </article>
+            <article
+              class="glass tilt p-6"
+              data-i="2"
+              style="
+                --acc: var(--terra);
+                border-top: 3px solid var(--terra);
+                --ry: 0deg;
+                --rx: 0deg;
+              "
+            >
+              <p class="text-4xl">🌍</p>
+              <h3 class="mt-3 text-2xl font-bold" style="color: var(--terra)">
+                Terra
+              </h3>
+              <p class="mt-2" style="color: var(--mute)">
+                Solid ground, steady teamwork.
+              </p>
+              <p class="mt-5 text-sm font-semibold">House leaders</p>
+              <dl class="mt-2 text-sm space-y-1" style="color: var(--mute)">
+                <div class="flex justify-between">
+                  <dt>President</dt>
+                  <dd>To be announced</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt>President's Assistant</dt>
+                  <dd>To be announced</dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="points" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="points_t">
+            How Houses earn points
+          </h2>
+          <div
+            id="pointList"
+            class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4"
+          >
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">🏆</span
+              ><span class="font-medium">Competitions</span>
+            </div>
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">📚</span
+              ><span class="font-medium">Olympiads</span>
+            </div>
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">🎯</span
+              ><span class="font-medium">Contests</span>
+            </div>
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">💡</span
+              ><span class="font-medium">Student ideas</span>
+            </div>
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">🎤</span
+              ><span class="font-medium">School events</span>
+            </div>
+            <div class="glass hov p-5 flex items-center gap-3">
+              <span class="text-2xl">🌟</span
+              ><span class="font-medium">Other school achievements</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scores" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="score_t">
+            House Scoreboard
+          </h2>
+          <p
+            class="mt-3 max-w-2xl"
+            style="color: var(--mute)"
+            data-i18n="score_p"
+          >
+            Every month, the results are announced and the scoreboard is
+            updated. Students can see how many points each House has.
+          </p>
+          <div id="rank" class="mt-8 glass p-6 space-y-5">
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-semibold" style="color: var(--terra)"
+                  >🌍 Terra
+                  <span
+                    class="text-xs ml-2 px-2 py-0.5 rounded-full"
+                    style="background: var(--terra); color: var(--bg)"
+                    >Leading</span
+                  ></span
+                >
+                <span class="disp font-bold text-xl"
+                  >69
+                  <span class="text-xs font-normal" style="color: var(--mute)"
+                    >points</span
+                  ></span
+                >
+              </div>
+              <div class="bar">
+                <i
+                  data-w="100"
+                  style="background: var(--terra); width: 100%"
+                ></i>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-semibold" style="color: var(--luna)"
+                  >🌙 Luna</span
+                >
+                <span class="disp font-bold text-xl"
+                  >62
+                  <span class="text-xs font-normal" style="color: var(--mute)"
+                    >points</span
+                  ></span
+                >
+              </div>
+              <div class="bar">
+                <i
+                  data-w="89.85507246376811"
+                  style="background: var(--luna); width: 89.8551%"
+                ></i>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-semibold" style="color: var(--solis)"
+                  >☀️ Solis</span
+                >
+                <span class="disp font-bold text-xl"
+                  >52
+                  <span class="text-xs font-normal" style="color: var(--mute)"
+                    >points</span
+                  ></span
+                >
+              </div>
+              <div class="bar">
+                <i
+                  data-w="75.36231884057972"
+                  style="background: var(--solis); width: 75.3623%"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dash" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="dash_t">
+            House dashboards
+          </h2>
+          <p
+            class="mt-3 max-w-2xl"
+            style="color: var(--mute)"
+            data-i18n="dash_p"
+          >
+            Pick a House to see its points, ranking and how each class
+            contributes.
+          </p>
+          <div
+            id="tabs"
+            role="tablist"
+            class="mt-6 inline-flex gap-1 glass !rounded-full p-1"
+          >
+            <button
+              role="tab"
+              aria-selected="true"
+              data-i="0"
+              class="tab px-4 py-2 rounded-full text-sm font-semibold"
+              style="--acc: var(--luna)"
+            >
+              🌙 Luna</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-i="1"
+              class="tab px-4 py-2 rounded-full text-sm font-semibold"
+              style="--acc: var(--solis)"
+            >
+              ☀️ Solis</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-i="2"
+              class="tab px-4 py-2 rounded-full text-sm font-semibold"
+              style="--acc: var(--terra)"
+            >
+              🌍 Terra
+            </button>
+          </div>
+          <div id="dashBody" class="mt-6" style="--acc: var(--luna)">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="glass hov p-5">
+                <p class="text-sm" style="color: var(--mute)">Total points</p>
+                <p
+                  class="disp text-3xl font-bold mt-2"
+                  style="color: var(--acc)"
+                >
+                  62
+                </p>
+              </div>
+              <div class="glass hov p-5">
+                <p class="text-sm" style="color: var(--mute)">Place</p>
+                <p
+                  class="disp text-3xl font-bold mt-2"
+                  style="color: var(--acc)"
+                >
+                  #2
+                </p>
+              </div>
+              <div class="glass hov p-5">
+                <p class="text-sm" style="color: var(--mute)">
+                  Average per class
+                </p>
+                <p
+                  class="disp text-3xl font-bold mt-2"
+                  style="color: var(--acc)"
+                >
+                  5.6
+                </p>
+              </div>
+              <div class="glass hov p-5">
+                <p class="text-sm" style="color: var(--mute)">Top class</p>
+                <p
+                  class="disp text-3xl font-bold mt-2"
+                  style="color: var(--acc)"
+                >
+                  8A
+                </p>
+              </div>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-4 mt-4">
+              <div class="glass tilt p-6 lg:col-span-2 flex items-center gap-6">
+                <svg
+                  viewBox="0 0 100 100"
+                  class="w-32 h-32 -rotate-90 flex-none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="42"
+                    fill="none"
+                    stroke="var(--line)"
+                    stroke-width="10"
+                  ></circle>
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="42"
+                    fill="none"
+                    stroke="var(--acc)"
+                    stroke-width="10"
+                    stroke-linecap="round"
+                    stroke-dasharray="89.4 264"
+                  ></circle>
+                </svg>
+                <div>
+                  <p class="disp text-4xl font-bold" style="color: var(--acc)">
+                    34%
+                  </p>
+                  <p class="mt-1 text-sm" style="color: var(--mute)">
+                    Share of all points
+                  </p>
+                </div>
+              </div>
+              <div class="glass p-6 lg:col-span-3">
+                <h3 class="font-bold mb-4">Points by activity</h3>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">🏆</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >Competitions</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="100"
+                        style="background: var(--acc); width: 100%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">14</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">📚</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >Olympiads</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="85.71428571428571"
+                        style="background: var(--acc); width: 85.7143%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">12</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">🎯</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >Contests</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="64.28571428571429"
+                        style="background: var(--acc); width: 64.2857%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">9</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">💡</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >Student ideas</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="78.57142857142857"
+                        style="background: var(--acc); width: 78.5714%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">11</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">🎤</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >School events</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="71.42857142857143"
+                        style="background: var(--acc); width: 71.4286%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">10</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-sm">
+                    <span class="w-6">🌟</span
+                    ><span
+                      class="w-28 sm:w-44 truncate text-xs sm:text-sm"
+                      style="color: var(--mute)"
+                      >Other school achievements</span
+                    >
+                    <div class="bar flex-1">
+                      <i
+                        data-w="42.857142857142854"
+                        style="background: var(--acc); width: 42.8571%"
+                      ></i>
+                    </div>
+                    <span class="w-6 text-right font-semibold">6</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="glass p-6 mt-4">
+              <h3 class="font-bold mb-4">Classes</h3>
+              <div
+                class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-11 gap-2"
+              >
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 1A: 5"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 19%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">1A</p>
+                  <p class="disp font-bold">5</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 2A: 6"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 22%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">2A</p>
+                  <p class="disp font-bold">6</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 3A: 7"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 24%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">3A</p>
+                  <p class="disp font-bold">7</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 4A: 2"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 13%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">4A</p>
+                  <p class="disp font-bold">2</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 5A: 8"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 26%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">5A</p>
+                  <p class="disp font-bold">8</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 6A: 1"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 10%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">6A</p>
+                  <p class="disp font-bold">1</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 7A: 7"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 24%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">7A</p>
+                  <p class="disp font-bold">7</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 8A: 9"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 28%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">8A</p>
+                  <p class="disp font-bold">9</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 9A: 9"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 28%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">9A</p>
+                  <p class="disp font-bold">9</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 10A: 2"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 13%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">10A</p>
+                  <p class="disp font-bold">2</p>
+                </div>
+                <div
+                  class="hov rounded-xl p-3 text-center"
+                  title="Class 11A: 6"
+                  style="
+                    background: color-mix(in srgb, var(--acc) 22%, transparent);
+                    border: 1px solid var(--line);
+                  "
+                >
+                  <p class="text-xs" style="color: var(--mute)">11A</p>
+                  <p class="disp font-bold">6</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="year" class="py-24">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+          <p class="text-5xl mb-4">🏆</p>
+          <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="year_t">
+            House of the Year
+          </h2>
+          <p
+            class="mt-5 text-lg leading-relaxed"
+            style="color: var(--mute)"
+            data-i18n="year_p"
+          >
+            At the end of the school year, all points are counted. The House
+            with the most points becomes House of the Year.
+          </p>
+          <p
+            class="disp mt-10 text-2xl sm:text-3xl font-bold"
+            data-i18n="motto"
+          >
+            One for all. All for one.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <nav id="rail" class="glass" aria-label="Sections">
+      <a href="#top" data-s="hero" aria-label="Home" class=""
+        >🏠<span data-i18n="n_home">Home</span></a
+      >
+      <a href="#about" data-s="about" aria-label="About" class=""
+        >📖<span data-i18n="nav_about">About</span></a
+      >
+      <a href="#houses" data-s="houses" aria-label="Houses" class="on"
+        >🏛️<span data-i18n="nav_houses">Houses</span></a
+      >
+      <a href="#points" data-s="points" aria-label="Points"
+        >⭐<span data-i18n="nav_points">Points</span></a
+      >
+      <a href="#scores" data-s="scores" aria-label="Scoreboard"
+        >📊<span data-i18n="nav_scores">Scoreboard</span></a
+      >
+      <a href="#dash" data-s="dash" aria-label="Dashboards"
+        >🧭<span data-i18n="nav_dash">Dashboards</span></a
+      >
+      <a href="#year" data-s="year" aria-label="House of the Year"
+        >🏆<span data-i18n="nav_year">House of the Year</span></a
+      >
+    </nav>
+    <aside id="set" aria-label="Settings" inert="">
+      <div class="flex justify-between items-center">
+        <h3 class="font-bold text-lg" data-i18n="set_t">Settings</h3>
+        <button id="setX" class="ib" aria-label="Close">✕</button>
+      </div>
+      <div class="mt-6 space-y-6 text-sm">
+        <div>
+          <p class="mb-2 font-semibold" data-i18n="set_theme">Theme</p>
+          <div class="seg flex flex-wrap gap-2" data-k="theme">
+            <button data-v="dark" data-i18n="th_d" aria-pressed="false">
+              Dark</button
+            ><button data-v="light" data-i18n="th_l" aria-pressed="false">
+              Light</button
+            ><button data-v="auto" data-i18n="th_a" aria-pressed="true">
+              System
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="mb-2 font-semibold" data-i18n="set_lang">Language</p>
+          <div class="seg flex gap-2" data-k="lang">
+            <button data-v="en" aria-pressed="true">EN</button
+            ><button data-v="ru" aria-pressed="false">RU</button
+            ><button data-v="uz" aria-pressed="false">UZ</button>
+          </div>
+        </div>
+        <div class="flex justify-between items-center">
+          <span data-i18n="set_3d">3D background</span
+          ><button
+            class="sw"
+            role="switch"
+            data-k="fx"
+            aria-checked="true"
+          ></button>
+        </div>
+        <div class="flex justify-between items-center">
+          <span data-i18n="set_motion">Animations</span
+          ><button
+            class="sw"
+            role="switch"
+            data-k="motion"
+            aria-checked="true"
+          ></button>
+        </div>
+        <div class="flex justify-between items-center">
+          <span data-i18n="set_cursor">Custom cursor</span
+          ><button
+            class="sw"
+            role="switch"
+            data-k="cursor"
+            aria-checked="true"
+          ></button>
+        </div>
+        <button
+          id="reset"
+          class="px-4 py-2 rounded-full font-semibold glass"
+          data-i18n="set_reset"
+        >
+          Reset settings
+        </button>
+      </div>
+    </aside>
+    <div id="cd" class="cur" style="transform: translate(1194px, 309px)"></div>
+    <div
+      id="cr"
+      class="cur"
+      style="transform: translate(1193.64px, 309.065px)"
+    ></div>
+
+    <footer class="py-10 text-center text-sm" style="color: var(--mute)">
+      <span data-i18n="contact">Contact</span>:
+      <a
+        class="font-semibold"
+        style="color: var(--ink)"
+        href="https://t.me/tayirovss"
+        target="_blank"
+        rel="noopener"
+        >@tayirovss</a
+      >,
+      <a
+        class="font-semibold"
+        style="color: var(--ink)"
+        href="https://t.me/null_css"
+        target="_blank"
+        rel="noopener"
+        >@null_css</a
+      >
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
