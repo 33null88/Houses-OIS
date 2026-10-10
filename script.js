@@ -4,22 +4,22 @@ const HOUSES = [
     id: "luna",
     col: "#8fb0ff",
     em: "🌙",
-    suf: "A",
-    s: [5, 6, 7, 2, 8, 1, 7, 9, 9, 2, 6],
+    suf: "",
+    s: [],
   },
   {
     id: "solis",
     col: "#ffb52e",
     em: "☀️",
-    suf: "B",
-    s: [2, 5, 6, 7, 8, 9, 4, 3, 7, 0, 1],
+    suf: "",
+    s: [],
   },
   {
     id: "terra",
     col: "#3fd68a",
     em: "🌍",
-    suf: "V",
-    s: [9, 8, 7, 4, 5, 6, 3, 2, 1, 4, 20],
+    suf: "",
+    s: [],
   },
 ];
 const POINTS = [
@@ -243,9 +243,9 @@ for (const l in X) Object.assign(T[l], X[l]);
 HOUSES.forEach((h) => (h.col = `var(--${h.id})`));
 /* sample breakdown by activity (sums equal house totals) */
 const CAT = {
-  luna: [14, 12, 9, 11, 10, 6],
-  solis: [10, 15, 8, 6, 7, 6],
-  terra: [18, 11, 14, 9, 10, 7],
+  luna: [],
+  solis: [],
+  terra: [],
 };
 const $ = (q) => document.querySelector(q),
   $$ = (q) => [...document.querySelectorAll(q)],
